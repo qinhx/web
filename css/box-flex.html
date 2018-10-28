@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>box Flex</title>
+	<style>
+		.father{
+			display: -webkit-box;
+			width: 500px;
+			height: 600px;
+			font-size: 50px;
+			text-align: center;
+			line-height: 600px;
+			-webkit-box-direction:reverse;
+		}
+		.son1{
+			-webkit-box-flex:2;
+			background-color: red;
+			/*对宽度设置*/
+			width: 100px;
+		}
+		.son2{
+			-webkit-box-flex:1;
+			background-color: green;
+		}
+		.son3{
+			-webkit-box-flex:2;
+			background-color: grey;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>
