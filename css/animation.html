@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>animation</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: relative;
+			animation: myfirst 5s infinite;
+		}
+		@keyframes myfirst{
+			0%{background: red;left: 0px;top: 0px;}
+			25%{background-color: yellow;left: 200px;top: 0px;}
+			50%{background-color: blue;left: 200px;top: 200px;}
+			75%{background-color: green;left: 0px;top: 200px;}
+			100%{background-color: red;left: 0px;top: 0px;}
+		}
+		.card{
+			position: static;
+			width: 200px;
+			height: 200px;
+			font-size: 125px;
+			line-height: 200px;
+			border-radius: 50%;
+			background-color: blue;
+			color: black;
+			top: 200px;
+			left: 200px;
+			text-align: center;
+			animation: spin 3s infinite linear;
+		}
+		@keyframes spin{
+			from{
+				transform: rotateX(0);
+			}to{
+				transform: rotateX(360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div class="card">6</div>
+</body>
+</html>
