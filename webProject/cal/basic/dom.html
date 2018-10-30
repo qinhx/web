@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function add() {
+            var node =  document.createElement("div");
+            node.style.width = "100px";
+            node.style.height = "50px";
+            node.style.backgroundColor = "blue";
+            node.style.margin = "2px";
+            document.body.appendChild(node);
+        }
+        function  remove() {
+            var  allShow = document.getElementsByTagName("div");
+            for (var i =1;i<allShow.length;i++){
+                if (i%2==0) {
+                    document.body.removeChild(allShow[i]);
+                    allShow[i].remove();
+                    allShow[i].style.visibility="hidden";
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button type="button" onclick="add()" value="add">add</button>
+    <button type="button" onclick="remove()" value="remove">remove</button>
+</body>
+</html>

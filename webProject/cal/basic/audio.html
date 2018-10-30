@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>audio</title>
+
+</head>
+<body>
+    <div>
+        <audio id="audio" controls autoplay="autoplay" src="music.mp3" preload="auto" loop="loop">
+
+        </audio>
+        <p id="length"></p>
+        <p id="curr"></p>
+        <button id="btn"> 按钮</button>
+        <button id="gls">Local</button>
+
+    </div>
+    <script type="text/javascript">
+        var btn = document.getElementById("btn");
+        var length = document.getElementById("length");
+        var curr = document.getElementById("curr");
+        var audio  = document.getElementById("audio");
+        var lo = document.getElementById("gls");
+        lo.onclick = function () {
+            if (window.localStorage){
+                alert("This chrome can store in local")
+            } else {
+                alert("this chrome can't store in local")
+            }
+        }
+        function show() {
+            length.innerHTML = "audio length is : "+audio.played.length;
+            curr.innerHTML = "the current is : "+audio.played.end(0);
+        }
+        btn.onclick= function(){
+            setInterval(show,1000);
+        }
+    </script>
+</body>
+</html>
