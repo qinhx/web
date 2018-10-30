@@ -7,6 +7,9 @@
         #canvas{
             border: 1px solid black;
         }
+        #canvas1{
+            border: 2px solid red;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +58,29 @@
         context.fillStyle = "red";
         context.fill();
     </script>
-
+    <canvas id="canvas1" width="1000" height="1000"></canvas>
+    <script type="text/javascript">
+        var canvas = document.getElementById("canvas1");
+        var context = canvas.getContext("2d");
+        var img  = new Image();
+        img.src = "a.png";
+        img.onload = function () {
+            context.drawImage(img,0,0,1000,1000,500,500,500,500);
+            context.drawImage(img,0,0,1000,1000,0,0,500,500);
+        }
+        context.beginPath();
+        context.arc(500,500,500,0,Math.PI*2,true)
+        context.closePath();
+        context.clip();
+        var pixel = context.getImageData(0,0,500,500);
+        n = pixel.data.length;
+        for (var i=0;i<=4;i++){
+            pixel.data[i] = 255-pixel.data[i];
+            pixel.data[i+1] = 255-pixel.data[i+1];
+            pixel.data[i+2] = 255-pixel.data[i+2];
+            pixel.data[i+3] = 255-pixel.data[i+3]
+        }
+        context.putImageData(pixel,500,500);
+    </script>
 </body>
 </html>
