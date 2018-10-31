@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+        #test{
+            background-color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        function setColorByjQuery() {
+            $(":input").css("background","green" )
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form action="" id="test">
+            <label><span>姓名：</span><input type="text"></label>
+            <label><span>邮箱：</span><input type="email"></label>
+            <div>
+                <span>留言：</span><textarea id="textArea"></textarea>
+            </div>
+        </form>
+        <script type="text/javascript">
+            var btn1 = document.getElementById("btn1");
+            var form = document.getElementById("test");
+            function change() {
+                form.style.backgroundColor = "blue";
+                console.log(form.style);
+            }
+        </script>
+        <div class="wrapper">
+            <button type="button" id="btn1" onclick="change()">JavaScriptToChangeColor</button>
+            <button type="button"  id="btn2" onclick="setColorByjQuery()">jQueryToChangeColor</button>
+        </div>
+    </div>
+</body>
+</html>

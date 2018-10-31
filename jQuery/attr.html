@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改元素属性</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+
+            $("#btn").click(function (e) {
+                var str = $("#baidu").attr("title");
+                str +="<br>"+ $("#souhu").attr("title")+$("#souhu").attr("href")
+                str +="<br>"+ $("#baba").attr("title")+$("#baba").attr("href")
+                str +="<br>"+ $("#tencent").attr("title")+$("#tencent").attr("href")
+                $("#info").append(str)
+            })
+            $("#btn").mouseover(function (e) {
+                $("#btn").css({
+                    "background": "red"
+                })
+            }).mouseout(function () {
+                $("#btn").css({
+                "background": "grey"
+            })
+            })
+        }
+        )
+    </script>
+    <style type="text/css">
+        #tooltip{
+            position: absolute;
+            border: 1px solid red;
+            background-color: grey;
+            padding: 1px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="http://www.baidu.com" id="baidu" title="百度">百度</a> </li>
+        <li><a href="http://www.souhu.com" id="souhu" title="搜狐">搜狐</a> </li>
+        <li><a href="http://www.alibaba.com" id="baba" title="阿里巴巴">阿里巴巴</a> </li>
+        <li><a href="http://www.tencent.com" id="tencent" title="腾讯">腾讯</a> </li>
+    </ul>
+    <div id="info"></div>
+    <input type="button" id="btn" value="显示属性">
+    <div id="message">添加的类容</div>
+
+</body>
+</html>
