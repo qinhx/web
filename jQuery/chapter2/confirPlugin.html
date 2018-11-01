@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>plugin</title>
+    <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./BeAlert/BeAlert.js"></script>
+    <link rel="stylesheet" href="BeAlert/BeAlert.css">
+</head>
+<body>
+    <h2 id="alter">Alter</h2>
+    <h2 id="confirm">Confirm</h2>
+<script type="text/javascript">
+        $(function () {
+            $("#alter").click(function () {
+                alert("Hello","welcome",function () {
+
+                },{type:'success',confirmButtonText:'OK'})
+            });
+            $("#confirm").click(function () {
+                confirm("are you sure","you message",function (isConfirm) {
+                    if (isConfirm){
+
+                    } else {
+
+                    }
+                },{confirmButtonText:'Yes',cancelButtonText:'No'})
+            })
+
+        })
+</script>
+</body>
+</html>
