@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $().ready(function (e) {
+            $("#btn1").bind("click",function () {
+                $("#content").show(1000);
+            })
+            $("#btn2").bind("click",function () {
+                if ( $("#content").is(":visible")){
+                    $("#content").hide(1000,showColor)
+                }else{
+                    $("#content").css("background-color","yellow")
+                    $("#content").show(3000,showColor);
+                }
+            })
+            $("#btn3").click(function () {
+                $("#btn2").unbind("click")
+            })
+            function showColor() {
+                $("#content").css("background-color","green")
+            }
+        })
+    </script>
+    <style type="text/css">
+        #content{
+            display: none;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <input id="btn1" type="button" value="显示消息">
+    <input id="btn2" type="button" value="特效动画">
+    <input id="btn3" type="button" value="移除btn2">
+    <div id="content">
+        <pre>
+            $(selector).bind(event,data,function)
+            中event 可以是js 中的事件处理类型 blur focus load 等
+            data 可以作为参数传给事件对象的额外参数
+        </pre>
+    </div>
+</body>
+</html>
