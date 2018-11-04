@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 库所支持的动画方法</title>
+    <style type="text/css">
+        #animate{
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        function show(){
+            $("#animate").css({
+                "background":"green",
+                width:200
+            })
+        }
+        $(function () {
+            $("#btn").click(function () {
+                $("#animate").show(1000,show());
+            })
+            $("#btn1").click(function () {
+                $("#animate").hide(1000,show());
+            })
+            $("#btn2").click(function () {
+                $("#animate").toggle(1000,show());
+            })
+        })
+
+    </script>
+
+</head>
+<body>
+    <h1>jQuery的基本动画方法</h1>
+    <div id="animate">
+        <ul>
+            <li>列表一</li>
+            <li>列表二</li>
+            <li>列表三</li>
+            <li>列表四</li>
+            <li>列表五</li>
+        </ul>
+    </div>
+    <button id="btn" value="show" type="button">Show</button>
+    <button id="btn1" value="show" type="button">hide</button>
+    <button id="btn2" value="show" type="button">toggle</button>
+</body>
+</html>
