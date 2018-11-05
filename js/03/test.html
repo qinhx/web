@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>照片展示</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        #smallPhotos{
+            width: 620px;
+            margin: 10px 0;
+        }
+        #prev{
+            display: inline-block;
+            height: 40px;
+            width: 20px;
+            float: left;
+            border: solid;
+            background-image: url("icon_prve2.jpg");
+        }
+        #next{
+            display: inline-block;
+            height: 40px;
+            width: 20px;
+            float: right;
+            border: solid;
+            background-image: url("icon_prve.jpg");
+        }
+        #smallPhotosList{
+            width: 560px;
+            float: left;
+            margin: 0 auto;
+            padding: 0;
+        }
+        #smallPhotosList li{
+            float: left;
+            margin-left: 10px;
+        }
+        #smallPhotosList img{
+            cursor: pointer;
+            height: 40px;
+            width: 70px;
+            border: 2px solid;
+        }
+        ul,li{
+            list-style: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="bigPhoto"><img src="photo01.jpg " width="620" height="450" id="bigPhotoSrc"></div>
+    <div id="smallPhotos">
+        <span id="prev"></span>
+        <ul id="smallPhotosList">
+        </ul>
+        <SPAN id="next"></SPAN>
+    </div>
+<script type="text/javascript">
+    var eg = {};
+    eg.$ = function(id){
+        return document.getElementById(id);
+    };
+    eg.getElementsByClassName = function(className, element) {
+        if(document.getElementsByClassName){
+            return (element || document).getElementsByClassName(className)
+        }
+        var children = (element || document).getElementsByTagName('*');
+        var elements = [];
+        for (var i = 0; i < children.length; i++) {
+            var child = children[i];
+            var classNames = child.className.split(' ');
+            for (var j = 0; j < classNames.length; j++) {
+                if (classNames[j] == className) {
+                    elements.push(child);
+                    break;
+                }
+            }
+        }
+        return elements;
+    };
+    eg.addListener = function(target,type,handler){
+        if(target.addEventListener){
+            target.addEventListener(type,handler,false);
+        }else if(target.attachEvent){
+            target.attachEvent("on"+type,handler);
+        }else{
+            target["on"+type]=handler;
+        }
+    };
+    eg.data = [
+        ["photo01.jpg","thumb01.jpg"]
+        ,["photo02.jpg","thumb02.jpg"]
+        ,["photo03.jpg","thumb03.jpg"]
+        ,["photo04.jpg","thumb04.jpg"]
+        ,["photo05.jpg","thumb05.jpg"]
+        ,["photo06.jpg","thumb06.jpg"]
+        ,["photo07.jpg","thumb07.jpg"]
+        ,["photo01.jpg","thumb01.jpg"]
+        ,["photo02.jpg","thumb02.jpg"]
+        ,["photo03.jpg","thumb03.jpg"]
+        ,["photo04.jpg","thumb04.jpg"]
+        ,["photo05.jpg","thumb05.jpg"]
+        ,["photo06.jpg","thumb06.jpg"]
+        ,["photo07.jpg","thumb07.jpg"]
+    ];
+    eg.showNumber = 0;		//默认显示
+    eg.groupNumber = 1;		//当前显示的组
+    eg.groupSize = 6;		//每组的数量
+    eg.showThumb = function (group) {
+        var ul = eg.$("smallPhotosList");
+        ul.innerHTML = '';
+        var start = (group-1)*eg.groupSize;
+        var end = group*eg.groupSize;
+        for (var i = start;i<end&&i<eg.data.length;i++){
+            var li = document.createElement("li");
+            li.innerHTML = '<img src ="'+eg.data[i][1]+'" id = "thumb'+i+'"/>';
+            ul.appendChild(li);
+            (function (i) {
+                eg.addListener(li,"click",function () {
+                    eg.showNumber = i;
+                    eg.showBig();
+                })
+            }(i))
+        }
+    }
+    eg.init =function () {
+        eg.showThumb(1);
+    }
+    eg.init();
+    eg.showBig =function () {
+        eg.$("bigPhotoSrc").src = eg.$("thumb"+eg.showNumber).src.replace("thumb","photo");
+    }
+</script>
+</body>
+</html>
