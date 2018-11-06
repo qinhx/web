@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3</title>
+    <STYLE type="text/css">
+        .head{
+            width: 320px;
+            height: 300px;
+            border: 2px solid;
+            border-radius: 150px;
+            background:-webkit-radial-gradient(right top,#fff 10%,#07bbee 20%,#10a6ce 75%,#000);
+            position: relative;
+            }
+        .eyes .eye{
+            width: 50px;
+            height: 70px;
+            border-radius: 25px;
+            border: solid;
+            background: white;
+            float: left;
+            background: white;
+            position: relative;
+        }
+        .black{
+            background: black;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 17px;
+        }
+        .eyes{
+            position: absolute;
+            top: 60px;
+            left: 100px;
+            z-index: 9999;
+        }
+        .face{
+            width: 230px;
+            height: 190px;
+            background: white;
+            border-radius: 100px;
+            position: absolute;
+            top: 105px;
+            left: 45px;
+            border: black 2px solid;
+        }
+        .nose{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: -webkit-radial-gradient(70% 20%,circle,white 5%, red);
+            border: black 2px solid;
+            position: absolute;
+            left: 90px;
+            top: 20px;
+        }
+        .whiskers{
+            background: #FFF;
+            width: 200px;
+            height: 80px;
+            position: relative;
+            top: 55px;
+            left: 15px;
+            border-radius: 15px;
+        }
+        .whisker{
+            background: #333;
+            height: 2px;
+            width: 50px;
+            position: absolute;
+        }
+        .r20{transform: rotate(20deg);}
+        .r160{transform: rotate(160deg);}
+        .rTop{
+            top: 20px;
+            left: 120px;
+        }
+        .lTop{
+            top: 20px;
+            left: 20px;
+        }
+        .rt{
+            left: 120px;
+            top: 35px;
+        }
+        .lt{
+            top: 35px;
+            left: 20px;
+        }
+        .rBottom{
+            left: 120px;
+            top: 50px;
+        }
+        .lBottom{
+            top: 50px;
+            left: 20px;
+        }
+        .nose_line{
+            height: 100px;
+            width: 4px;
+            background: black;
+            position: absolute;
+            top: 54px;
+            left: 105px;
+            z-index: 999;
+        }
+        .mouth{
+            width: 180px;
+            height: 200px;
+            border-radius: 80px;
+            position: absolute;
+            top: -45px;
+            left: 20px;
+            border-bottom: black solid 3px;
+        }
+    </STYLE>
+</head>
+<body>
+    <div class="RobotCat">
+        <div class="head">
+            <div class="eyes">
+                <div class="eye left"><div class="black bLeft"></div> </div>
+                <div class="eye right"><div class="black bRight"></div> </div>
+            </div>
+            <div class="face">
+                <div class="white"></div>
+                <div class="nose"><div class="light"></div> </div>
+                <div class="nose_line"></div>
+                <div class="mouth"></div>
+                <div class="whiskers">
+                    <div class="whisker rTop r160"></div>
+                    <div class="whisker rt"></div>
+                    <div class="whisker rBottom r20"></div>
+                    <div class="whisker lTop r20"></div>
+                    <div class="whisker lt"></div>
+                    <div class="whisker lBottom r160"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
