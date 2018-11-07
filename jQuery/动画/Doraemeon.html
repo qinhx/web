@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://localhost:63342/js/14/Doraemon.html?_ijt=pq9nlo2rdbjpjq4691lfg7vt8f -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Doraemeon</title>
+</head>
+<body>
+    <div id="doraemon">
+        <canvas class="face" width="600" height="800">流浏览器不支持canvas</canvas>
+    </div>
+<script>
+    var face = document.querySelector("#doraemon .face");
+    var context = face.getContext("2d");
+    context.beginPath();
+    context.arc(252,252,250,0,2*Math.PI);
+    context.fillStyle = "#07BEEA"
+    context.fill();
+    context.strokeWidth=2
+    context.strokeStyle = "#333";
+    context.stroke();
+    context.beginPath()
+    context.moveTo(160,450);
+    context.bezierCurveTo(0,400,0,110,210,115);
+    context.lineTo(290,115);
+    context.bezierCurveTo(500,110,500,400,340,450);
+    context.bezierCurveTo(280,470,220,470,160,450);
+    context.fillStyle = "#FFF"
+    context.fill();
+    context.stroke();
+    context.beginPath();
+    context.moveTo(150,150);
+    context.lineTo(150,100);
+    context.bezierCurveTo(160,50,240,50,250,100);
+    context.lineTo(250,150);
+    context.bezierCurveTo(240,200,160,200,150,150);
+    context.moveTo(250,100);
+    context.bezierCurveTo(260,50,340,50,350,100)
+    context.lineTo(350,150);
+    context.bezierCurveTo(340,200,260,200,250,150)
+    context.fillStyle = "#FFF"
+    context.fill()
+    context.stroke()
+    context.beginPath()
+    context.arc(225,135,10,0,2*Math.PI);
+    context.arc(275,135,10,0,2*Math.PI);
+    context.fillStyle = "#333";
+    context.fill();
+    context.beginPath();
+    context.arc(250,197,25,0,2*Math.PI);
+    context.fillStyle = "#c93e00";
+    context.fill()
+    context.stroke()
+    context.closePath()
+    context.beginPath()
+    context.arc(260,190,10,0,2*Math.PI)
+    var grd = context.createRadialGradient(260,190,2,260,190,10);
+    grd.addColorStop(0,"#FFF")
+    grd.addColorStop(1,"#c93e00");
+    context.fillStyle  = grd;
+    context.fill()
+    context.beginPath();//重置当前绘画路径
+    context.moveTo(250, 222);
+    context.lineTo(250, 395);
+    context.moveTo(100, 320);
+    context.bezierCurveTo(180, 420, 320, 420, 400, 320);
+    context.lineWidth = 3;
+    context.stroke();
+    context.beginPath()
+    context.moveTo(80,200)
+    context.lineTo(180,220);
+    context.moveTo(80,245);
+    context.lineTo(180,245);
+    context.moveTo(80,290)
+    context.lineTo(180,270)
+
+    context.moveTo(420,200)
+    context.lineTo(320,220);
+    context.moveTo(420,245);
+    context.lineTo(320,245);
+    context.moveTo(420,290)
+    context.lineTo(320,270)
+
+    context.lineWidth = 3
+    context.stroke()
+
+
+
+</script>
+
+</body></html>
