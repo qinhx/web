@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngLocale">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="angular.js"></script>
+</head>
+<body >
+<div ng-init="person={'name':'jone'};arr = [1,2,3] " ">
+
+    <div>{{"hello world"}}</div>
+    <div>1+1 = {{1+1}}</div>
+    <div>1||0 = {{true||0}}</div>
+
+        <div>{{person.name}}</div>
+        <div>{{arr[0]}}</div>
+    </div>
+<hr style="height: 4px; background: black">
+<h2>ng-model</h2>
+    <div>用户名<input type="text" ng-model="uname" name="userName"></div>
+    <div>{{uname}}</div>
+    <div ng-bind="uname"></div>
+<hr style="height: 4px; background: black">
+    <div ng-init="price = 10,num =1">
+        <div>价格<input type="text" ng-model="price"></div>
+        <div>数量<input type="text" ng-model="num"></div>
+        <div>总价：{{price*num}}</div>
+    </div>
+
+</body>
+</html>
