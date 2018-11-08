@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../angular.js"></script>
+</head>
+<body>
+    <div repeat="5">
+        <h3>你好！</h3>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module("app",[]);
+        app.directive("repeat",function () {
+            return{
+                restrict:"A",
+                replace:true,
+                compile:function (element,arrs) {
+                    var tmp = element.html();
+                    for(var i = 0;i<arrs.repeat-1;i++){
+                        element.append(tmp);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

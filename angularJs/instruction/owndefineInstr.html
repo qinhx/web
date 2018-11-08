@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../angular.js"></script>
+</head>
+<body>
+    <div>
+        <p>作为标签：</p>
+        <div ng-controller="control">
+            <hello-world></hello-world>
+        </div>
+        <p>作为属性：</p>
+        <div hello-world=""></div>
+        <p>link</p>
+        <hello-world name = "Jone"></hello-world>
+    </div>
+    <SCRIPT type="text/javascript">
+        var app = angular.module("app",[]);
+        app.directive("helloWorld",function () {
+            return{
+                restrict:'AEC',//A:alt C:class E:element
+                template:'<h1>{{name}} Custom Directive</h1>'
+            }
+        })
+        app.controller("control",function ($scope) {
+            $scope.name = "你猜我猜不猜";
+        })
+    </SCRIPT>
+</body>
+</html>
