@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>ch05_05</title>
+    <script type="text/javascript" src="./angular.js">
+    </script>
+</head>
+<body>
+    <input type="text" ng-model="name">
+    <div>Count:{{count}}</div>
+<script type="text/javascript">
+    angular.module('app',[]).run(['$rootScope',function ($rootScope) {
+        $rootScope.name = "MyLove";
+        $rootScope.count = 0;
+        $rootScope.$watch('name',function () {
+            $rootScope.count++;
+        })
+    }])
+</script>
+</body>
+</html>

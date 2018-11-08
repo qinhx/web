@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>BroadCast</title>
+    <script type="text/javascript" src="angular.js"></script>
+    <style type="text/css">
+        #parent{
+            width: 350px;
+            height: 500px;
+            border: black solid 2px;
+        }
+        .child{
+            width: 100px;
+            height: 200px;
+            margin: auto;
+            border: black solid ;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent" ng-controller="parentControl">
+        <p>父作用域</p>
+        <button ng-click="post()">BroadCast</button>
+        <div class="child" ng-controller="childControl">
+            <p>{{name}}</p>
+            <p>{{age}}</p>
+        </div>
+    </div>
+<SCRIPT type="text/javascript">
+    var app = angular.module('app',[]);
+    app.controller("parentControl",function ($scope) {
+                $scope.post = function () {
+                    $scope.$broadcast("info",{name:"jone",age:23})
+                }
+    })
+    app.controller("childControl",function ($scope) {
+        $scope.$on("info",function (event,data) {
+            var jData = JSON.stringify(data);
+            var a = JSON.parse(jData);
+            $scope.name = a.name;
+            $scope.age = a.age;
+        })
+    })
+</SCRIPT>
+</body>
+</html>
