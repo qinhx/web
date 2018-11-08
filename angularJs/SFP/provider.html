@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../angular.js"></script>
+</head>
+<body>
+<div ng-controller="main"></div>
+<script type="text/javascript">
+    var app =angular.module("app",[]);
+    app.provider("custom",function () {
+        this.name = "Smith";
+        this.getName = function () {
+            return name;
+        }
+        this.$get = function () {//$get() 必须要实现， 不然要报错，是为了给其他组件使用
+            var name = this.name;
+            return function () {
+                alert("hello"+name)
+            }
+        }
+    })
+    app.controller("main",function (custom) {
+        custom();
+    })
+</script>
+</body>
+</html>
