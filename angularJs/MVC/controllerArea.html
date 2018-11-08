@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>ControllerArea</title>
+    <script type="text/javascript" src="../angular.js"></script>
+</head>
+<body>
+    <div ng-controller="userControl">
+        用户名：<input type="text" ng-model="userName" placeholder="用户名">
+        密码：<input type="password" ng-model="pwd" placeholder="密码">
+        <p>您的用户名是:{{userName}}</p>
+        <p>您的密码是:{{pwd}}</p>
+    </div>
+    <div ng-controller="userControl1">
+        用户名：<input type="text" ng-model="userName" placeholder="用户名">
+        密码：<input type="password" ng-model="pwd" placeholder="密码">
+        <p>您的用户名是:{{userName}}</p>
+        <p>您的密码是:{{pwd}}</p>
+        <button type="submit" value="提交" ng-click="login()">提交</button>
+    </div>
+<script type="text/javascript">
+    function UserController($scope,$log) {
+        $scope.userName = "admin";
+        $scope.pwd = "123445"
+        $log.info("UserController->name"+$scope.userName)
+    }
+    function UserController1($scope,$log) {
+        $scope.userName = "另一个";
+        $scope.pwd = "66666666666"
+        $log.info("UserController->name"+$scope.userName)
+        $scope.login = function () {
+            if ($scope.userName =="admin"&&$scope.pwd =="admin")
+                alert("login success")
+        }
+
+    }
+    var app =angular.module("app",[]);
+    app.controller("userControl",UserController)
+    app.controller("userControl1",UserController1)
+</script>
+</body>
+</html>
