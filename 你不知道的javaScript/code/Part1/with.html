@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <SCRIPT>
+        function foo(obj) {
+            with (obj) {
+                a = 2;
+            }
+        }
+        var o1 = {
+            a:10
+        }
+        var o2 = {
+            b:3
+        }
+        foo(o1)
+        console.log(o1.a)
+        foo(o2)
+        console.log(o2.a)
+        console.log(a);
+    </SCRIPT>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var modules = (function manage() {
+            var modules = {};
+            function define(name,deps,impl) {
+                modules[name] = impl.apply(impl,deps);
+            }
+            function get(name) {
+                return modules[name];
+            }
+            return{
+                define:define,
+                get:get
+            }
+        })();
+        modules.define("bar",[],function () {
+                function hello(who) {
+                    console.log(who)
+                }
+                return {hello:hello}
+        })
+        var bar = modules.get("bar")
+        bar.hello("hippo")
+    </script>
+</body>
+</html>

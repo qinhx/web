@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var foo = (function CoolModule(id) {
+            var publicAPI = {
+                change:change,
+                identify:identify1
+            }
+            function change() {
+                publicAPI.identify = identify2;
+            }
+            function identify1() {
+                console.log(id)
+            }
+            function identify2() {
+                console.log(id.toUpperCase())
+            }
+            return publicAPI;
+        })("foo module");
+        foo.identify();
+        foo.change();
+        foo.identify();
+    </script>
+</body>
+</html>
