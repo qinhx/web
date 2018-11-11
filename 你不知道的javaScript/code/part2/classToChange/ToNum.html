@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var  a ="42";
+    var c = [4,2];
+    console.log(Number(a))//42
+    console.log(Number(c))//NAN
+    console.log(Number(""))//0
+    console.log(Number([]))//NAN
+    console.log(Number(true))//1
+    console.log(Number(false))//0
+    console.log(Number(Object))//NAN
+    console.log(Number(Symbol))//NAN
+    console.log(Number(null))//0
+    console.log(Number(undefined))//NAN
+</script>
+</body>
+</html>
