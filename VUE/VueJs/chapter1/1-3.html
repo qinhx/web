@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+
+</head>
+<body>
+    <div id="app">
+         <message content="Hello world" title = "Component"></message>
+        <button v-on:click = "Ealter">alter</button>
+        <p v-once = "a">{{a}}</p>
+        <p>{{b}}</p>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component("message",{
+            props:['content','title'],
+            data:function () {
+                return {
+                    name:'gavin'
+                }
+            },
+            template: "<div><p>{{title}}</p>" +
+                "<h1>{{content}}<small>{{name}}</small></h1>" +
+                "</div>"
+        })
+        var vm = new Vue({
+            el: "#app",
+            data:{a:1,
+                b:10
+            },
+            methods:{"Ealter":function () {
+                    alert(this.a)
+                }
+            }
+        })
+        vm.$data.a = 10
+        vm.$data.b = 12;
+    </script>
+</body>
+</html>

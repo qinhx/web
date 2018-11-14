@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+
+    </STYLE>
+</head>
+<body>
+    <div id="app">
+        <div v-if = "yes">YES<br>
+            <div v-if = "yesNext">Hello</div>
+            <div v-else>World</div>
+        </div>
+        <div v-else>NO</div>
+        <div v-show = "yes"><div v-bind:style = "myStyle">
+            <ul>
+                <li v-for = "(value,index) in obj">{{value}}</li>
+                <li v-for = "(value,index) in arr">{{value}}</li>
+            </ul>
+        </div>
+        </div>
+        <div v-show = "yesNext"><img v-bind:style = "myStyle" /></div>
+    </div>
+</body>
+<script>
+    var vm =new Vue({
+        el:'#app',
+        data:{
+            yes:true,
+            yesNext:false,
+            arr:['a','b','c'],
+            myStyle:{
+                width:"400px",
+                height:"100px",
+                border:"solid"
+            },
+            obj:{
+                a:"a-value",
+                b:"b-value",
+                c:"c-value"
+            }
+        },
+
+    })
+</script>
+</html>

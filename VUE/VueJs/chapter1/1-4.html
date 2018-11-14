@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+        #id-1{
+            font-size: large;
+            background: blue;
+        }
+    </STYLE>
+
+</head>
+<body>
+<div id="app">
+    <span v-bind:id = "'id-'+id">{{name}}</span>
+    <p>{{index !== 0 ? names[0]:names[1]}}</p>
+    <p v-for = "nam in names">{{nam}}</p>
+    <ul v-for = "item in items">
+        <li>{{item|json}}</li>
+        <li>{{item.name}}<span>{{item.version}}</span></li>
+    </ul>
+    <input type="number" v-model = "newData"/>
+    <span>You input is {{newData}}</span>
+    <p>&yen;{{price}}</p>
+    <label><input type="checkbox" value="1" v-model = "checkData">1</label>
+    <label><input type="checkbox" value="2" v-model = "checkData">2</label>
+    <label><input type="checkbox" value="3" v-model = "checkData">3</label>
+    <label><input type="checkbox" value="4" v-model = "checkData">4</label>
+    <p>multiChecked:{{checkData.join(" ")}}</p>
+    <p v-bind:style = "style">abcd</p>
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:"Vue",
+            style:{
+              fontSize:20, color:"red"
+            },
+            id:1,
+            src:"../assets/img/a.png",
+            index:0,
+            checkData:[],
+            names:["vue1","vue2"],
+            items:[
+                {name:"css",version:"1.0"},
+                {name:"js",version:"3.0"},
+                {name:"html",version:"2.0"}
+            ],
+            newData:0
+        },
+        computed:{
+            price:{
+                set:function () {
+                    this.index = 5+this.newData*10;
+                },
+                get:function () {
+                    return (this.index * 10).toFixed(2)
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
