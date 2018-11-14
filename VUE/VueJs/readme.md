@@ -78,7 +78,7 @@
   })
   ```
 
-​	注意**是methods** 不是**method** 二者区别是**method**是网络请求的参数有` get post` 
+  ​注意**是methods** 不是**method** 二者区别是**method**是网络请求的参数有` get post` 
 
 + + 数据绑定
 
@@ -116,6 +116,26 @@
 **在绑定的时候用了v-bind: 就不能用{{}}来绑定了** 
 
 + 指令
+
+
++ + v-bind
+  + v-model
+  + v-if /v-else v-show
+  + v-for//其中参数为(item,index)
+  + v-on 事件监听
+  + v-text v-html 是为了避免闪现
+  + v-pre 跳过编译呈现原始的面目
+  + v-once 只渲染一次
+  + **自定义指令基础** 
+  + + 指令注册：
+    + + Vue.directive("名称",definition)
+      + Vue.extend({dirctive:{“名称",definition}})//当前组件使用
+    + 指令的定义对象
+    + + bind 只被调用一次
+      + update 在bind之后初始值为参数进行第一次调用，绑定值发生变化时调用
+      + unbind 解绑时调用
+
+
 + 过滤器
 + 过渡
 + 组件
