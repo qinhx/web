@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+    <div id="app">
+        <span v-html = "link"></span>
+        <span>{{link}}</span>
+        <button v-on:click = "myAlter">点我</button>
+        <p>{{firstName}}</p>
+        <p>{{secondName}}</p>
+        <p>{{fullName}}</p>
+    </div>
+</body>
+<SCRIPT>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            link:"<h1>标题一</h1>",
+            firstName:"Ga",
+            secondName:"vin"
+        },
+        methods:{
+            myAlter:function () {
+                alert("!!!!")
+            }
+        },
+        computed:{
+          fullName:{
+              get:function () {
+                  return this.firstName  + this.secondName;
+              },
+              set: function (newValue) {
+                  var name = newValue.split(' ');
+                  this.firstName = name[0];
+                  this.secondName = name[name.length -1]
+              }
+          }
+        }
+    })
+    vm.fullName = "Jone Snow";
+</SCRIPT>
+</html>
