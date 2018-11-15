@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+<div id="app">
+    <my-component><div slot="head"><h3>标题取啥</h3></div>
+        <div slot="foot">底部东东</div>
+        <div>这一块默认的</div>
+    </my-component>
+</div>
+<script>
+    Vue.component("myComponent",{
+        template:'<div class="container">' +
+            '<div class="header"><slot name = "head"></slot></div> ' +
+            '<div class="main"><slot>默认的东东</slot></div> ' +
+            '<div class="foot"><slot name = "foot"></slot></div> ' +
+            '</div>'
+    })
+    var vm = new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

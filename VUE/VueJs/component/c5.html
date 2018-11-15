@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+<div id="app">
+    <component :is = "currentView"></component>
+    <button @click = "change('A')">切换到A</button>
+    <button @click = "change('B')">切换到B</button>
+    <button @click = "change('C')">切换到C</button>
+</div>
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            currentView:'comA'
+        },
+        components:{
+            comA:{
+                template:'<div>this is com A</div>'
+            },
+            comB:{
+                template: '<div>this is com B</div>'
+            },
+            comC:{
+                template:'<div>this is com C'
+            }
+        },
+        methods:{
+            change:function (data) {
+                this.currentView = 'com'+data;
+            }
+    }
+
+    })
+</script>
+</body>
+</html>

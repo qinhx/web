@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+    <div id="app">
+        <my-component>
+            <template scope = "props">
+                <p>父组件的</p>
+                <p>下面是子组件的</p>
+                <p>{{props.msg}}</p>
+            </template>
+        </my-component>
+    </div>
+<script>
+    Vue.component("myComponent",{
+        template:'<div class = "container">' +
+            '<slot msg = "This is a good things"></slot>' +
+            '</div>'
+    })
+    var vm = new Vue({
+        el:'#app',
+
+    })
+</script>
+</body>
+</html>

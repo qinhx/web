@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+<div id="app">
+    <my :books = "books">
+        <template slot = "book" scope = "props">
+            <li>{{props.bookName}}</li>
+        </template>
+    </my>
+</div>
+<script>
+    Vue.component("my",{
+        props:{
+            books: {
+                type:Array,
+                default:function () {
+                    return []
+                }
+            }
+        },
+        template:'<ul><slot name = "book" v-for="book in books" :book-name="book.name"></slot></ul>'
+    })
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            books:[
+                {name:"HTML"},
+                {name:"CSS"},
+                {name:"JAVASCRIPT"},
+            ]
+        }
+    })
+</script>
+</body>
+</html>
