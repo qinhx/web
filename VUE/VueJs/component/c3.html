@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+    <DIV id="app">
+        <p>{{total}}</p>
+        <my-component @increase = "getTotal" @reduce = "getTotal"></my-component>
+        <my-component v-model="total"></my-component>
+    </DIV>
+<script>
+    Vue.component("myComponent",{
+        template:'<div><button @click = "Add">+1</button><button @click = "Reduce">-1</button>' +
+            '<button @click = "modelAdd">modelADD</button></div>',
+        data:function () {
+            return {
+                count :0
+            }
+        },
+        methods:{
+            Add:function () {
+                this.count++;
+                this.$emit("increase",this.count)
+            },
+            Reduce:function () {
+                this.count--;
+                this.$emit("reduce",this.count)
+            },
+            modelAdd:function () {
+                this.count++;
+                this.$emit("input",this.count)
+            }
+        }
+    });
+    var vm =new Vue({
+        el:'#app',
+        data:{
+            total:0
+        },
+        methods: {
+            getTotal:function (data) {
+                this.total = data;
+            }
+        }
+    })
+</script>
+</body>
+</html>

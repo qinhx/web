@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+    <DIV id="app">
+        <p>{{name}}</p>
+        <my-component></my-component>
+    </DIV>
+<script>
+    var bus = new Vue();
+    Vue.component("myComponent",{
+        template:'<div><button @click="handleEvent">发送事件</button></div>',
+        data:function () {
+            return {
+                name:"Gavin"
+            }
+        },
+        methods:{
+            handleEvent:function () {
+                bus.$emit("bus-data",this.name)
+            }
+        }
+    })
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            name:""
+        },
+        mounted:function () {
+            var _this = this;
+            bus.$on("bus-data",function (data) {
+                _this.name = data;
+            })
+        }
+    })
+</script>
+</body>
+</html>
