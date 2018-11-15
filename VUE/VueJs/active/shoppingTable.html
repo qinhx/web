@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <STYLE type="text/css">
+        table{
+            border: solid 1px;
+            border-spacing: 0;
+            empty-cells: show;
+        }
+        th,td{
+            padding: 8px 16px;
+            border: 1px solid #e9e9e9;
+            text-align: center;
+        }
+        th{
+            background: #f7f7f7;
+            color: #56cb77;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+    </STYLE>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th> </th>
+                <th>商品名称 </th>
+                <th>商品单价 </th>
+                <th>购买数量 </th>
+                <th>操作 </th>
+            </tr>
+            <tr v-for = "(item,index) in list">
+                <td>{{index}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><button @click = "reduce(index)">-</button>{{item.count}}<button @click = "add(index)">+</button></td>
+                <td><button @click = "remove(index)">移除</button></td>
+            </tr>
+        </table>
+        <div>总价：{{totalPrice}}</div>
+    </div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            list: [
+                {name:"iphone7", price:6188, count:1},
+                {name:"ipad Pro", price:2888, count:1},
+                {name:"macBook", price:9880, count:1}
+            ],
+            total:0
+        },
+        methods:{
+            add:function (index) {
+                this.list[index].count = this.list[index].count +1;
+            },
+            reduce:function (index) {
+                if (this.list[index].count<=0){
+                    alert("不能再少啦")
+                } else {
+                    this.list[index].count--;
+                }
+            },
+            remove:function (index) {
+                this.list[index].count = 0;
+            }
+        },
+        computed:{
+            totalPrice:function () {
+                    var total = 0;
+                    for (let i=0;i<this.list.length;i++){
+                        var item = this.list[i];
+                        total = total + item.price*item.count;
+                    }
+                    return total.toString().replace(/\B(?=(\d{3})+$)/g,',')
+            }
+        }
+    })
+</script>
+</body>
+</html>
