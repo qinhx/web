@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="../assets/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css"/>-->
+    <script type="text/javascript" src="../assets/js/vue.min.js">
+
+    </script>
+    <STYLE type="text/css">
+    </STYLE>
+</head>
+<body>
+<div id="app">
+    <ele :columns = "columns" :data ="data"></ele>
+</div>
+<script>
+
+    Vue.component('ele',{
+       props:{
+           columns: {
+               type:Array,
+               default:function () {
+                   return [];
+               }
+           },
+           data:{
+               type: Array,
+               default:function () {
+                   return [];
+               }
+           }
+       },
+        data:function () {
+            return{
+                currentColumns:[],
+                currentData:[]
+            }
+        },
+        render:function (createEle) {
+           var ths = [];
+           var _this = this;
+           this.currentColumns.forEach(function (item) {
+               ths.push(createEle(
+                   'th',item.title
+               ))
+           });
+           var trs = [];
+           this.currentData.forEach(function (row) {
+               var tds = [];
+               _this.currentColumns.forEach(function (cell) {
+                   tds.push(createEle('td',row[cell.key]));
+               });
+               trs.push(createEle('tr',tds))
+           });
+        return createEle('table',[
+            createEle('tr',ths),
+            createEle('tbody',trs)
+        ])
+        },
+        methods:{
+           makeData:function () {
+               this.currentColumns = this.columns;
+               this.currentData = this.data;
+
+           }
+        },
+        watch:{
+           data:function () {
+               this.makeData();
+           }
+        },
+        mounted(){
+           this.makeData();
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            columns:[
+                {title:"姓名",
+                key:'name'},
+                {title:"年龄",
+                    key:'age'},
+                {title:"出生日期",
+                    key:'birthday'},
+                {title:'地址',
+                    key:'address'}
+            ],
+            data:[
+                {name:"Jone",age:18,birthday:"1998-6-10",address:"beijing"},
+                {name:"Jone",age:20,birthday:"1998-8-10",address:"beijing"},
+                {name:"Jone",age:10,birthday:"1994-2-10",address:"beijing"},
+                {name:"Jone",age:22,birthday:"1991-7-10",address:"beijing"},
+                {name:"Jone",age:11,birthday:"1992-6-10",address:"beijing"},
+                {name:"Jone",age:19,birthday:"1994-6-10",address:"beijing"},
+            ]
+        }
+    })
+</script>
+</body>
+</html>
