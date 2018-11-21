@@ -18,3 +18,19 @@
 6. 新增 api
 7. 元编程
 8. ES6之后
+
+## 闭包
+
+``````javascript
+function makeClosures(arr, fn) {
+    var result = [];
+    arr.forEach(function(e){
+        result.push(function(num){
+            fn(num)
+        })(e);
+    });
+    return result;
+}
+``````
+
+fn(arr[i]) = result[i]()
