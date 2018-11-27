@@ -1,36 +1,39 @@
 <template>
     <div>
-      <p>{{name}}</p>
-      <p>{{age}}</p>
-      <input type="text" v-model="myAge">
-      <p>{{myAge}}</p>
-      <button type="button" @click="Change(myAge)">点我</button>
-      <p>{{getAge}}</p>
+      <ul>
+          <li v-for="it in currData">
+            <p>{{it.item_id}}</p>
+            <p>{{it.choice}}</p>
+          </li>
+      </ul>
+      <button @click="change(0)">改变</button>
     </div>
 </template>
 
 <script>
   import {mapState,mapGetters,mapActions} from 'vuex'
     export default {
-    data(){
-      return{
-        myAge:''
-      }
-    },
+
       computed:{
           ...mapState([
-            'name',
-            'age'
+            'title',
+            'itemNum',
+            'itemDetail',
+            'currData'
           ]),
         ...mapGetters([
-          'getName',
-          'getAge'
+            'getItemDetailsI'
         ]),
       },
       methods:{
           ...mapActions([
-            'Change'
+              'change',
+            'init'
           ])
+      },
+      created(){
+        this.init();
+        console.log(this.currData);
       }
     }
 </script>
