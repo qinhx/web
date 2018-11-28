@@ -48,7 +48,29 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+		proxy: {
+						
+            '/api1': {
+            	target: 'https://way.jd.com/zhixunkeji/sjzh1011',
+            	changeOrigin: true,
+							secure: false,
+							pathRewrite:{
+								'^/api':''
+							}
+            },
+						'/api2': {
+							target: 'https://way.jd.com/zhixunkeji/sjzh1012',
+							changeOrigin: true,
+							secure: false,
+							pathRewrite:{
+								'^/api2':''
+							}
+						}
+						
+						
+        },
+
   },
   performance: {
     hints: false
